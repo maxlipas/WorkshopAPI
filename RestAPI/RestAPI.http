@@ -1,0 +1,29 @@
+@RestAPI_HostAddress = http://localhost:5251
+@token = 
+
+### Логин (admin / admin)
+POST {{RestAPI_HostAddress}}/api/Autorize/login?login=admin&password=admin
+
+### Цеха
+GET {{RestAPI_HostAddress}}/api/Workshops
+
+### Работники цеха 1
+GET {{RestAPI_HostAddress}}/api/Workers?workshopId=1
+
+### Спецодежда
+GET {{RestAPI_HostAddress}}/api/Workwears
+
+### Получения работника 1
+GET {{RestAPI_HostAddress}}/api/Receipts?workerId=1
+
+### Создать получение (нужен Bearer token)
+POST {{RestAPI_HostAddress}}/api/Receipts
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "workerId": 3,
+  "workwearId": 1,
+  "receivedAt": "2026-04-01",
+  "signed": false
+}
